@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Recipe recommendation app</title>
+	  <link rel='stylesheet' href="{{ url_for('static', filename='index.css')}}">
+  </head>
+  <body>
+    <h1>Recipe Recommendation App</h1>
+    <form action="{{url_for('recommendation') }}" method="post">
+      <!-- Ingredients -->
+      <div class='form-group'>
+        <label for="ingredients">Ingredients:</label><br><br>
+        <textarea class="form-control" id = "ingredients" rows="3" name="ingredients" required></textarea><br><br>
+      </div>
+      <!-- Cuisine-->
+      <div class = 'form-group'>
+        <label for="cuisine">Cuisine:</label><br><br>
+        <select class = 'form-control' id="cuisine" name="cuisine" multiple>
+          <option value="American">American</option>
+          <option value="Salad">Salad</option>
+          <option value="Italian">Italian</option>
+          <option value="Mexican">Mexican</option>
+          <option value="Asian">Asian</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Indian">Indian</option>
+          <option value="Chinese">Chinese</option>
+          <option value="Latin America">Latin American</option>
+          <option value="Mediterranean">Mediterranean</option>
+          <option value="Hawaiian">Hawaiian</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Thai">Thai</option>
+          <option value="Soup">Soup</option>
+          <option value="Seafood">Seafood</option>
+          <option value="Korean">Korean</option>
+        </select><br><br>
+      </div>
+      <!-- Cooking Time -->
+      <div class = "form-group">
+        <label for="time">Cooking Time (in minutes):</label><br><br>
+        <input type="number" class = 'form-control' id="time" name="time"><br><br>
+      </div>
+      <!-- Diet Preferences -->
+      <div class = "form-group">
+        <label for="diet">Diet and Cooking Preferences:</label><br><br>
+        <select class = "form-control" id="diet" name="diet" multiple>
+          <option value="Keto Recipes">Keto</option>
+          <option value="Kid Friendly">Kid friendly</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Dairy Free">Dairy Free</option>
+          <option value="Gluten Free">Gluten Free</option>
+          <option value="Low Carb">Low Carb</option>
+          <option value="Paleo">Paleo</option>
+          <option value="Air Fryer Recipes">Air Fryer Recipes</option>
+          <option value="Freezer Meals">Freezer Meals</option>
+          <option value="Pressure Cooker Recipes">Pressure Cooker Recipes</option>
+          <option value="Slow Cooker Recipes">Slow Cooker Recipes</option>
+          <option value="Meal Prep Recipes">Meal Prep Recipes</option>
+        </select><br><br>
+      </div>
+      <button type="submit" class="btn btn-primary">Find Recipes</button>
+    </form>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Search Results for '{{ search_term }}'</h1>
+  {% if results %}
+    <ul>
+      {% for result in results %}
+        <li><a href="{{ url_for('recipe_detail', recipe_id=result.key) }}">{{ result.recipe_name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+{% endblock %}

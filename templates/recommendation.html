@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recommended Recipes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+<body>
+    <div class="container">
+      <h1 class="my-4">Recommended Recipes</h1>
+      {% if recipes %}
+        <div class="row">
+          {% for recipe in recipes %}
+            <div class="col-sm-4 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="{{ recipe.image }}" alt="{{ recipe.name }}">
+                <div class="card-body">
+                  <h5 class="card-title">{{ recipe.name }}</h5>
+                  <p class="card-text">{{ recipe.cuisine }}</p>
+                  <a href="{{ url_for('recipe_detail', recipe_id=recipe.key) }}" class="btn btn-primary">View Recipe</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>No recipes found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
+<!--
+  <body>
+    <h1>Recommended Recipes</h1>
+
+    {% if recipes %} {% for recipe in recipes %}
+    <h2>{{ recipe.name }}</h2>
+    <img src="{{ recipe.image }}" alt="{{ recipe.name }}" width="200" />
+    <p>Cuisine: {{ recipe.cuisine }}</p>
+    <p>Cooking Time: {{ recipe.time }} minutes</p>
+    <p>Servings: {{ recipe.servings }}</p>
+    <p>Diet: {{ recipe.diet }}</p>
+    <p>Ingredients:</p>
+    <ul>
+      {% for ingredient in recipe.ingredients.split(',') %}
+      <li>{{ ingredient }}</li>
+      {% endfor %}
+    </ul>
+    <p>Instructions:</p>
+    <ol>
+      {% for instruction in recipe.instructions.split(',') %}
+      <li>{{ instruction }}</li>
+      {% endfor %}
+    </ol>
+
+    {% endfor %} {% else %}
+    <p>No recipes found.</p>
+    {% endif %}
+  </body>
+</html>
+-->
+{% endblock %}

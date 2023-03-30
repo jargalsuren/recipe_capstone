@@ -1,0 +1,12 @@
+select {
+    max-width: 100%;
+    width: auto;
+}
+
+option {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
