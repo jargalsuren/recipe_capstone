@@ -1,36 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Sign Up</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
 </head>
 <body>
-	<div class="container">
-		<div class="form-container">
-			<h2>Sign Up</h2>
-			<form>
-				<label for="name">Name</label>
-				<input type="text" id="name" name="name" placeholder="Enter your name">
-
-				<label for="email">Email</label>
-				<input type="email" id="email" name="email" placeholder="Enter your email">
-
-				<label for="password">Password</label>
-				<input type="password" id="password" name="password" placeholder="Enter your password">
-
-				<label for="confirm-password">Confirm Password</label>
-				<input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
-
-				<button type="submit">Sign Up</button>
-			</form>
-			<p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
-		</div>
-		<div class="image-container">
-			<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80">
-		</div>
-	</div>
+    <div class="container">
+        <div class="image">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80" alt="background">
+        </div>
+        <div class="form-container">
+            <h1>Sign Up</h1>
+            <form action="#" method="POST">
+                <div class="input-container">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-container">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <div class="input-container">
+                    <button type="submit">Sign Up</button>
+                </div>
+            </form>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
 </body>
 </html>
+
 {% endblock %}
