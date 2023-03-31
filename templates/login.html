@@ -1,31 +1,19 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
-</head>
-<body>
-	<div class="form-container">
-		<div class="form-container">
-			<h2>Login</h2>
-			<form>
-				<label for="email">Email</label>
-				<input type="email" id="email" name="email" placeholder="Enter your email">
-
-				<label for="password">Password</label>
-				<input type="password" id="password" name="password" placeholder="Enter your password">
-
-				<button type="submit">Login</button>
-			</form>
-			<p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
-		</div>
-		<div class="image-container">
-			<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80">
-		</div>
-	</div>
-</body>
-</html>
+<div class="container">
+  <div class="navbar">
+    <a href="#">Logo</a>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <button type="submit">Login</button>
+      <div class="signup">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></div>
+    </form>
+  </div>
+  <div class="image"></div>
+</div>
 {% endblock %}
-
