@@ -1,0 +1,17 @@
+/* Override Bootstrap styles */
+
+/* Customize recipe card */
+.card-title {
+    font-size: 1.2rem;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Center section headers */
+h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}

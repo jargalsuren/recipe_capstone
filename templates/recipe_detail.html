@@ -1,36 +1,45 @@
 {% extends "base.html" %}
 
 {% block title %}
-Home
+{{ recipe.name }}
 {% endblock %}
 
 {% block content %}
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{ recipe.name }}</title>
-  </head>
-  <body>
-    <h1>{{ recipe.name }}</h1>
-    <img src="{{ recipe.image }}" alt="{{ recipe.name }}">
-    <p>Cuisine: {{ recipe.cuisine }}</p>
-    <p>Cooking Time: {{ recipe.time }} minutes</p>
-    <p>Servings: {{ recipe.servings }}</p>
-    <p>Diet: {{ recipe.diet }}</p>
-    <p>Ingredients:</p>
-    <ul>
-      {% for ingredient in recipe.ingredients.split(',') %}
-        <li>{{ ingredient }}</li>
-      {% endfor %}
-    </ul>
-    <p>Instructions:</p>
-    <ol>
-      {% for instruction in recipe.instructions.split(',') %}
-        <li>{{ instruction }}</li>
-      {% endfor %}
-    </ol>
-  </body>
-</html>
-  
-  {% endblock %}
+<head>
+  <link rel='stylesheet' href="{{ url_for('static', filename='recipe_detail.css')}}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="container mt-5">
+  <div class="row">
+        <div class="back-button">
+    <a href="#" onclick="history.back()"><i class="fa fa-arrow-left"></i> Back</a>
+  </div>
+      </div>
+  <div class="row">
+    <div class="col-md-6">
+      <img src="{{ recipe.image }}" alt="{{ recipe.name }}" class="img-fluid">
+    </div>
+    <div class="col-md-6">
+      <h1 class="mb-4">{{ recipe.name }}</h1>
+      <p class="font-weight-bold">Cuisine: {{ recipe.cuisine }}</p>
+      <p class="font-weight-bold">Cooking Time: {{ recipe.time }} minutes</p>
+      <p class="font-weight-bold">Servings: {{ recipe.servings }}</p>
+      <p class="font-weight-bold">Diet: {{ recipe.diet }}</p>
+      <hr>
+      <h2 class="font-weight-bold">Ingredients</h2>
+      <ul class="list-group list-group-flush">
+        {% for ingredient in recipe.ingredients.split(',') %}
+        <li class="list-group-item">{{ ingredient }}</li>
+        {% endfor %}
+      </ul>
+      <hr>
+      <h2 class="font-weight-bold">Instructions</h2>
+      <ol>
+        {% for instruction in recipe.instructions.split('.') %}
+        <li class="mb-3">{{ instruction }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}

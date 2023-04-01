@@ -140,6 +140,18 @@ def logout():
     return redirect(url_for('login'))
 
 
+@app.route('/homepage', methods=['GET', 'POST'])
+def homepage():
+    # query recipes for Mexican cuisine, Keto diet, and Air Fryer Recipes
+    mexican_recipes = Recipe.query.filter_by(cuisine='Mexican').limit(9).all()
+    italian_recipes = Recipe.query.filter_by(cuisine='Italian').limit(9).all()
+    american_recipes = Recipe.query.filter_by(cuisine='American').limit(9).all()
+    # render homepage with recipe sections
+    return render_template('homepage.html',
+                           mexican_recipes=mexican_recipes,
+                           american_recipes=american_recipes, italian_recipes=italian_recipes)
+
+
 @app.route('/search', methods=['GET', 'POST'])
 def index():
   return render_template('index.html')

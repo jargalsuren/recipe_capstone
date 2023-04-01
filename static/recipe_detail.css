@@ -1,0 +1,66 @@
+.container {
+    max-width: 900px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #ddd;
+}
+
+.list-group {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+li {
+    font-size: 1rem;
+}
+
+ol {
+    list-style-type: decimal-leading-zero;
+}
+.back-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    border: 5px solid #a6a4a4;
+    border-radius: 5px;
+}
+
+.back-button a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.back-button a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    li {
+        font-size: 1rem;
+    }
+}

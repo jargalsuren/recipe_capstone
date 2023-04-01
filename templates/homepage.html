@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href="{{ url_for('static', filename='homepage.css')}}">
+</head>
+<br>
+<div class="container">
+    <div class="row">
+            <h3>Mexican Cuisine</h3>
+            {% for recipe in mexican_recipes %}
+                <div class="col-sm-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ recipe.image }}" alt="{{ recipe.name }}">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ recipe.name }}</h5>
+                    <p class="card-text">{{ recipe.cuisine }}</p>
+                    <a href="{{ url_for('recipe_detail', recipe_id=recipe.key) }}" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+            <h3>Italian Recipes</h3>
+            {% for recipe in italian_recipes %}
+                <div class="col-sm-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ recipe.image }}" alt="{{ recipe.name }}">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ recipe.name }}</h5>
+                    <p class="card-text">{{ recipe.cuisine }}</p>
+                    <a href="{{ url_for('recipe_detail', recipe_id=recipe.key) }}" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+            <h3>American Recipes</h3>
+            {% for recipe in american_recipes %}
+                <div class="col-sm-4 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ recipe.image }}" alt="{{ recipe.name }}">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ recipe.name }}</h5>
+                    <p class="card-text">{{ recipe.cuisine }}</p>
+                    <a href="{{ url_for('recipe_detail', recipe_id=recipe.key) }}" class="btn btn-primary">View Recipe</a>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+    </div>
+</div>
+{% endblock %}
