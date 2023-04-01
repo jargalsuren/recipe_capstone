@@ -12,6 +12,12 @@ Home
 <body>
     <div class="container">
       <h1 class="my-4">Recommended Recipes</h1>
+      <div class="row mb-4">
+        <div class="col-sm-12">
+          <p>Didn't find what you were looking for?</p>
+          <a href="{{ url_for('index') }}" class="btn btn-primary">Search again</a>
+        </div>
+      </div>
       {% if recipes %}
         <div class="row">
           {% for recipe in recipes %}
