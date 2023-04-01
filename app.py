@@ -112,7 +112,7 @@ def signup():
                         email=form.email.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        flash('Your account is successfully created! Please login to manage your tasks! :)')
+        flash('Your account is successfully created! Please login to get recipe recommendation! :)')
         return redirect(url_for('login'))
 
     return render_template('signup.html', form=form)
