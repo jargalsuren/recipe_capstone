@@ -142,6 +142,7 @@ def logout():
 
 
 @app.route('/homepage', methods=['GET', 'POST'])
+@login_required
 def homepage():
     # query recipes for Mexican cuisine, Italian, and American Recipes
     mexican_recipes = Recipe.query.filter_by(cuisine='Mexican').order_by(func.random()).limit(9).all()
@@ -161,6 +162,7 @@ def index():
 
 
 @app.route('/search_bar', methods=['GET', 'POST'])
+@login_required
 def search():
     if request.method == 'POST':
         search_term = request.form.get(search_term)
@@ -202,6 +204,7 @@ def recommendation():
 
 
 @app.route('/recipe/<int:recipe_id>')
+@login_required
 def recipe_detail(recipe_id):
     recipe = Recipe.query.get(recipe_id)
 

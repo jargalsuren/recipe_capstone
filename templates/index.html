@@ -13,12 +13,12 @@ Home
   <form action="{{url_for('recommendation') }}" method="post">
     <!-- Ingredients -->
     <div class="form-group">
-      <label for="ingredients">Ingredients:</label>
-      <textarea class="form-control" id="ingredients" rows="3" name="ingredients" required></textarea>
+      <label for="ingredients">Please enter the ingredients that you want to cook or the ingredients that you currently have:</label>
+      <textarea class="form-control" id="ingredients" rows="3" name="ingredients" Placeholder = "chicken, tomato, bean" required></textarea>
     </div>
     <!-- Cuisine -->
     <div class="form-group">
-      <label for="cuisine">Cuisine:</label>
+      <label for="cuisine">Choose all the cuisines that you want from below:</label>
       <select class="form-control" id="cuisine" name="cuisine" multiple>
         <option value="American">American</option>
         <option value="Salad">Salad</option>
@@ -41,12 +41,12 @@ Home
     </div>
     <!-- Cooking Time -->
     <div class="form-group">
-      <label for="time">Cooking Time (in minutes):</label>
-      <input type="number" class="form-control" id="time" name="time">
+      <label for="time">How many minutes do you have for cooking?</label>
+      <input type="number" class="form-control" id="time" name="time" Placeholder="example: 30">
     </div>
     <!-- Diet Preferences -->
     <div class="form-group">
-      <label for="diet">Diet and Cooking Preferences:</label>
+      <label for="diet">Select all the Diet and Cooking Preferences you have from below:</label>
       <select class="form-control" id="diet" name="diet" multiple>
         <option value="Keto Recipes">Keto</option>
         <option value="Kid Friendly">Kid friendly</option>
