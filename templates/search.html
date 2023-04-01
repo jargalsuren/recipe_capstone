@@ -5,7 +5,7 @@
   {% if results %}
     <ul>
       {% for result in results %}
-        <li><a href="{{ url_for('recipe_detail', recipe_id=result.key) }}">{{ result.recipe_name }}</a></li>
+        <li><a href="{{ url_for('recipe_detail', recipe_id=result.key) }}">{{ result.name }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

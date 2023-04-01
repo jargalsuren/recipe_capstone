@@ -9,6 +9,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, RadioField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy import func
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -142,10 +143,12 @@ def logout():
 
 @app.route('/homepage', methods=['GET', 'POST'])
 def homepage():
-    # query recipes for Mexican cuisine, Keto diet, and Air Fryer Recipes
-    mexican_recipes = Recipe.query.filter_by(cuisine='Mexican').limit(9).all()
-    italian_recipes = Recipe.query.filter_by(cuisine='Italian').limit(9).all()
-    american_recipes = Recipe.query.filter_by(cuisine='American').limit(9).all()
+    # query recipes for Mexican cuisine, Italian, and American Recipes
+    mexican_recipes = Recipe.query.filter_by(cuisine='Mexican').order_by(func.random()).limit(9).all()
+    italian_recipes = Recipe.query.filter_by(
+        cuisine='Italian').order_by(func.random()).limit(9).all()
+    american_recipes = Recipe.query.filter_by(
+        cuisine='American').order_by(func.random()).limit(9).all()
     # render homepage with recipe sections
     return render_template('homepage.html',
                            mexican_recipes=mexican_recipes,
@@ -160,16 +163,14 @@ def index():
 @app.route('/search_bar', methods=['GET', 'POST'])
 def search():
     if request.method == 'POST':
-        search_term = request.form['search_term']
-        results = Recipe.query.filter(
-            Recipe.name.like(f'%{search_term}%'),
-            Recipe.ingredients.like(f'%{search_term}%'),
-            Recipe.cuisine.like(f'%{search_term}%'),
-            Recipe.diet.like(f'%{search_term}%'),
-            Recipe.instructions.like(f'%{search_term}%')
-        ).all()
-        return render_template('search.html', results=results, search_term=search_term)
-    return redirect(url_for('index'))
+        search_term = request.form.get(search_term)
+        results = Recipe.query.filter(or_(
+            Recipe.name.contains(search_term),
+            Recipe.cuisine.contains(search_term),
+            Recipe.ingredients.contains(search_term),
+            Recipe.diet.contains(search_term),
+            Recipe.instruction.contains(search_term))).all()
+    return render_template('search.html', results=results, search_term=search_term)
 
 
 # Define the recommendation route
@@ -183,19 +184,27 @@ def recommendation():
     
     # Query the database to get the matching recipes
     recipes = Recipe.query.filter(
-        Recipe.cuisine.contains(cuisine), Recipe.diet.contains(diet), Recipe.time <= time).all()
+        Recipe.cuisine.contains(cuisine), Recipe.diet.contains(diet), Recipe.time <= time).order_by(func.random()).all()
     matched_recipes = []
     
     for recipe in recipes:
         if all(ingredient.lower() in recipe.ingredients for ingredient in ingredients):
             matched_recipes.append(recipe)
+    
+    #Finding similar recipes that does not necessarily match the user's input
+    similar_recipes = Recipe.query.filter(
+        (Recipe.cuisine == recipe.cuisine),
+        (Recipe.diet == recipe.diet)).filter(
+        Recipe.key != recipe.key
+    ).order_by(func.random()).limit(6).all()
 
-    return render_template('recommendation.html', recipes=matched_recipes)
+    return render_template('recommendation.html', recipes=matched_recipes, similar_recipes=similar_recipes)
 
 
 @app.route('/recipe/<int:recipe_id>')
 def recipe_detail(recipe_id):
     recipe = Recipe.query.get(recipe_id)
+
     return render_template('recipe_detail.html', recipe=recipe)
 
 if __name__ == '__main__':

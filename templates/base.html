@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" integrity="sha384-...">
+  <link rel='stylesheet' href="{{ url_for('static', filename='root.css')}}">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,7 +17,7 @@
         <ul class="navbar-nav">
             {% if current_user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('homepage') }}">Home</a>
+            <a class="nav-link" href="{{ url_for('homepage') }}">Browse</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('index') }}"> Get Recommendation</a>
@@ -24,10 +25,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
             </li>
+          <br><br>
           <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}" method="POST">
-                 <input class="form-control mr-sm-2" type="text" name="search_term" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <div class='input-group'>
+                    <input class="form-control mr-sm-2" type="text" name="search_term" placeholder="Search">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </div>
+                  </div>
              </form>
             </li>
           {% else %}
