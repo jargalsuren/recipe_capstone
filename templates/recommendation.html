@@ -14,7 +14,7 @@ Home
       <h1 class="my-4">Recommended Recipes</h1>
       <div class="row mb-4">
         <div class="col-sm-12">
-          <p>Didn't find what you were looking for?</p>
+          <p>Didn't find what you were looking for? We will work on adding more recipes for you. </p>
           <a href="{{ url_for('index') }}" class="btn btn-primary">Search again</a>
         </div>
       </div>
@@ -40,7 +40,6 @@ Home
 
     <div class="container">
     <h2>You May Like</h2>
-    <br><br>
         {% if similar_recipes %}
           <div class="row">
             {% for similar_recipe in similar_recipes %}
