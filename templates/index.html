@@ -6,7 +6,7 @@ Home
 
 {% block content %}
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.2/css/bootstrap.min.css">
 </head>
 <div class="container">
   <h1 class="text-center my-5">Recipe Recommendation App</h1>
@@ -14,11 +14,13 @@ Home
     <!-- Ingredients -->
     <div class="form-group">
       <label for="ingredients">Please enter the ingredients that you want to cook or the ingredients that you currently have:</label>
+      <br>
       <textarea class="form-control" id="ingredients" rows="3" name="ingredients" Placeholder = "chicken, tomato, bean" required></textarea>
     </div>
+    <br><br>
     <!-- Cuisine -->
     <div class="form-group">
-      <label for="cuisine">Choose all the cuisines that you want from below:</label>
+      <label for="cuisine">Choose all the cuisines that you want from below:</label><br>
       <select class="form-control" id="cuisine" name="cuisine" multiple>
         <option value="American">American</option>
         <option value="Salad">Salad</option>
@@ -39,14 +41,16 @@ Home
         <option value="Korean">Korean</option>
       </select>
     </div>
+    <br><br>
     <!-- Cooking Time -->
     <div class="form-group">
-      <label for="time">How many minutes do you have for cooking?</label>
+      <label for="time">How many minutes do you have for cooking?</label><br>
       <input type="number" class="form-control" id="time" name="time" Placeholder="example: 30">
     </div>
+    <br><br>
     <!-- Diet Preferences -->
     <div class="form-group">
-      <label for="diet">Select all the Diet and Cooking Preferences you have from below:</label>
+      <label for="diet">Select all the Diet and Cooking Preferences you have from below:</label><br>
       <select class="form-control" id="diet" name="diet" multiple>
         <option value="Keto Recipes">Keto</option>
         <option value="Kid Friendly">Kid friendly</option>
